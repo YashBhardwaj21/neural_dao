@@ -23,7 +23,6 @@ const App = () => (
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/my-nfts" element={<MyNFTs />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

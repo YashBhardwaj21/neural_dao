@@ -17,7 +17,7 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-card/80 backdrop-blur-md border-b border-card-border">
+    <nav className="sticky top-0 z-50 w-full bg-card/80 backdrop-blur-md border-b border-card-border" style={{backgroundColor:"black"}}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -37,10 +37,10 @@ const Navigation = () => {
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors",
+                  "flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 relative overflow-hidden",
                   isActive(item.href)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "text-white bg-gradient-primary shadow-lg shadow-primary/25 border border-primary/30"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted hover:shadow-glow"
                 )}
               >
                 <item.icon className="w-4 h-4" />
@@ -93,10 +93,10 @@ const Navigation = () => {
                   key={item.name}
                   to={item.href}
                   className={cn(
-                    "flex items-center space-x-2 px-3 py-3 rounded-lg transition-colors",
+                    "flex items-center space-x-2 px-3 py-3 rounded-lg transition-all duration-300 relative overflow-hidden",
                     isActive(item.href)
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-white bg-gradient-primary shadow-lg shadow-primary/25 border border-primary/30"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted hover:shadow-glow"
                   )}
                   onClick={() => setIsMenuOpen(false)}
                 >

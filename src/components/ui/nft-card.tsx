@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Clock, Heart, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
+import pic10 from '@/assets/pic10.jpg'
 interface NFTCardProps {
   nft: {
     id: string;
@@ -24,7 +24,7 @@ interface NFTCardProps {
 const NFTCard = ({ nft, className, showRentOption = true }: NFTCardProps) => {
   return (
     <Card className={cn(
-      "group overflow-hidden border-card-border bg-card hover:shadow-card transition-all duration-300 hover:scale-[1.02]",
+      "group overflow-hidden border-card-border bg-card/40 backdrop-blur-sm opacity-90 transition-all duration-300 hover:scale-[1.02] shadow-lg",
       className
     )}>
       {/* NFT Image */}
@@ -36,7 +36,7 @@ const NFTCard = ({ nft, className, showRentOption = true }: NFTCardProps) => {
         />
         
         {/* Status Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
+        <div className="absolute top-3 left-3 flex flex-col gap-2" >
           {nft.isRented && (
             <Badge variant="secondary" className="bg-warning text-warning-foreground">
               Rented
@@ -69,7 +69,7 @@ const NFTCard = ({ nft, className, showRentOption = true }: NFTCardProps) => {
       </div>
 
       {/* NFT Info */}
-      <div className="p-4 space-y-3">
+      <div className="p-4 space-y-3"  style={{backgroundImage: `url(${pic10})`}}>
         {/* Collection & Creator */}
         <div className="text-xs text-muted-foreground">
           {nft.collection && <span>{nft.collection}</span>}

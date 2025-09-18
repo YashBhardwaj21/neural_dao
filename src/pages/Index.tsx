@@ -203,12 +203,6 @@ const Index = () => {
                 Join the professional network of creators and collectors in the NFT rental economy.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" size="lg" className="bg-primary hover:bg-primary/90 shine-on-hover glow-on-hover" asChild>
-                  <Link to="/register">
-                    <Users className="mr-2 w-5 h-5"  />
-                    Create Account
-                  </Link>
-                </Button>
                 <Button variant="outline" size="lg" className="border-primary shine-on-hover glow-on-hover" asChild>
                   <Link to="/login">
                     <Wallet className="mr-2 w-5 h-5" />

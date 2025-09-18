@@ -3,10 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Search, Filter, Grid3X3, List } from 'lucide-react';
+import { Search, Filter, Grid3X3, List, Bold } from 'lucide-react';
 import NFTCard from '@/components/ui/nft-card';
 import Navigation from '@/components/layout/Navigation';
-
+import pic10 from '@/assets/pic10.jpg';
+import pic11 from '@/assets/pic11.jpg';
 const Marketplace = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
@@ -61,10 +62,23 @@ const Marketplace = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   return (
-    <div className="min-h-screen bg-background" data-page="marketplace">
-      <Navigation />
+    <div className="min-h-screen bg-background relative" data-page="marketplace" style={{ background: 'linear-gradient(135deg, rgba(0, 198, 196, 0.7), rgba(0, 180, 255, 0.7))' }}>
+      {/* Fixed Background Image */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: `url(${pic10})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+      />
       
-      <div className="container mx-auto px-4 py-8">
+      {/* Content Container */}
+      <div className="relative z-10">
+        <Navigation />
+        
+        <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2 bg-gradient-primary bg-clip-text text-transparent">
@@ -76,70 +90,56 @@ const Marketplace = () => {
         </div>
 
         {/* Filters */}
-        <div className="bg-card border border-card-border rounded-xl p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                placeholder="Search NFTs, collections, creators..."
-                className="pl-10 bg-input border-border"
-              />
-            </div>
+        <div className="bg-card border border-card-border rounded-xl p-6 mb-8 backdrop-blur-sm bg-background/100" style={{backgroundImage: `url(${pic10})`}}>
+  <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+    {/* Search */}
+    <div className="relative flex-1 max-w-md">
+      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+      <Input
+        placeholder="Search NFTs, collections, creators..."
+        className="pl-10 bg-input border-border" style={{fontWeight:"Bold", fontSize:16}}
+      />
+    </div>
 
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Badge
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  className={`cursor-pointer transition-colors ${
-                    selectedCategory === category 
-                      ? "bg-primary text-primary-foreground" 
-                      : "hover:bg-muted"
-                  }`}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category}
-                </Badge>
-              ))}
-            </div>
+    {/* Category Filter */}
+    
 
-            {/* Sort & View */}
-            <div className="flex items-center gap-3">
-              <Select defaultValue="recent">
-                <SelectTrigger className="w-40">
-                  <SelectValue placeholder="Sort by" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="recent">Recently Added</SelectItem>
-                  <SelectItem value="price-low">Price: Low to High</SelectItem>
-                  <SelectItem value="price-high">Price: High to Low</SelectItem>
-                  <SelectItem value="popular">Most Popular</SelectItem>
-                </SelectContent>
-              </Select>
+    {/* Sort & View */}
+    <div className="flex items-center gap-3">
+      <Select defaultValue="recent">
+        <SelectTrigger className="w-40">
+          <SelectValue placeholder="Sort by" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="recent">Recently Added</SelectItem>
+          <SelectItem value="price-low">Price: Low to High</SelectItem>
+          <SelectItem value="price-high">Price: High to Low</SelectItem>
+          <SelectItem value="popular">Most Popular</SelectItem>
+        </SelectContent>
+      </Select>
 
-              <div className="flex border border-border rounded-lg">
-                <Button
-                  variant={viewMode === 'grid' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setViewMode('grid')}
-                  className="rounded-r-none"
-                >
-                  <Grid3X3 className="w-4 h-4" />
-                </Button>
-                <Button
-                  variant={viewMode === 'list' ? 'default' : 'ghost'}
-                  size="sm"
-                  onClick={() => setViewMode('list')}
-                  className="rounded-l-none"
-                >
-                  <List className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className="flex border border-border rounded-lg">
+        <Button
+          variant={viewMode === 'grid' ? 'default' : 'ghost'}
+          size="sm"
+          onClick={() => setViewMode('grid')}
+          className="rounded-r-none"
+        >
+          <Grid3X3 className="w-4 h-4" />
+        </Button>
+        <Button
+          variant={viewMode === 'list' ? 'default' : 'ghost'}
+          size="sm"
+          onClick={() => setViewMode('list')}
+          className="rounded-l-none"
+        >
+          <List className="w-4 h-4" />
+        </Button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
         {/* NFT Grid */}
         <div className={`grid gap-6 ${
@@ -157,6 +157,7 @@ const Marketplace = () => {
           <Button variant="outline" size="lg">
             Load More NFTs
           </Button>
+        </div>
         </div>
       </div>
     </div>
